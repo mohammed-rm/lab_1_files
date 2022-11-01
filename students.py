@@ -46,14 +46,13 @@ class CSVReader:
 
     def get_birth_date_column(self):
         lines = self.read()
-        birth_date_column = []
-        date = Date(day=0, month=0, year=0)
+        birth_dates = []
         for line in lines:
-            date.day = int(line.split(';')[2].split('/')[0])
-            date.month = int(line.split(';')[2].split('/')[1])
-            date.year = int(line.split(';')[2].split('/')[2])
-            birth_date_column.append(date)
-        return birth_date_column
+            date = Date(day=int(line.split(';')[2].split('/')[0]),
+                        month=int(line.split(';')[2].split('/')[1]),
+                        year=int(line.split(';')[2].split('/')[2]))
+            birth_dates.append(date)
+        return birth_dates
 
 
 @dataclass
@@ -63,7 +62,7 @@ class Student:
     date_of_birth: Date
 
     def __str__(self):
-        return f"First Name : {self.first_name} | Last Name : {self.last_name} | Birth : {self.date_of_birth} | Email : {self.email_adress()} | Age : {self.get_age()}"
+        return f"First Name : {self.first_name}\nLast Name : {self.last_name}\nBirth : {self.date_of_birth}\nEmail : {self.email_adress()}\nAge : {self.get_age()}"
 
     def email_adress(self):
         return f"{self.first_name.lower()}.{self.last_name.lower()}@univ-tours.fr"
@@ -93,3 +92,4 @@ if __name__ == '__main__':
     for student in student_list:
         print(student)
         print()
+
