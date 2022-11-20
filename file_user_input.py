@@ -2,6 +2,10 @@ import os
 from typing import Generator
 
 
+def hello() -> None:
+    print("Bonjour le monde !")
+
+
 def create_file(file_name: str) -> None:
     with open(f"files_input/{file_name}.txt", 'w') as f:
         f.write("")
@@ -42,10 +46,10 @@ def main():
     is_file_created: bool = False
 
     while not quit:
-        if choice not in ["1", "2", "3", "4", "5"]:
+        if choice not in ["0", "1", "2", "3", "4", "5"]:
             choice = input("Choix invalide. Veuillez réessayer: ")
 
-        if choice in ['1', '2', '3', '4', '5']:
+        if choice in ['0', '1', '2', '3', '4', '5']:
 
             if choice == '0':
                 is_file_created = False
@@ -128,4 +132,5 @@ def main():
 
 
 if __name__ == '__main__':
+    # hello()
     main()
